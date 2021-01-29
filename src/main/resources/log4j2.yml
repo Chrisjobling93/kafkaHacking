@@ -1,0 +1,14 @@
+Configuration:
+  appenders:
+    Console:
+      name: STDOUT
+      JSONLayout:
+        complete: false
+        compact: true
+        eventEol: true
+        properties: true
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        ref: STDOUT

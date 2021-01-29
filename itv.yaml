@@ -1,0 +1,25 @@
+name: # The name of the service
+description: # A description of the service
+version: # The version of the spec to which the service is compliant, e.g. 1.0.0
+platform:
+  common: # Contains global values that will apply to every environment
+    deployment:
+      replicas: # The number of replicas (pods) of the service to run
+      size: # The CPU and memory sizes of each replica
+      image: # The location of the docker image
+      autoscale: # Whether to enable autoscaling on the service
+      autoscaling: # Configure the autoscaling parameters for the service
+      secretVariables: # A hash of secrets keys to inject as environment variables
+    ingress:
+      ${ingress type}: # Type of ELB to use. Can be 'internal' or 'public'. Both can be specified separately.
+        http: # Whether the ingress should listen on HTTP/80
+        ssl: # Whether the ingress should listen on HTTPS/443
+        sslCert: # The AWS ARN of the ACM Certificate to use. If not specified, defaults to the standard env ACM cert
+        visibility: # Simple access configuration.
+        securityGroups: # Advanced access configuration.
+        dnsName: # DNS Name for service.
+        idleTimeout: # Idle timeout in ELB configuration (in seconds)
+        lbLogging: # Whether to enable ELB Access logging to an S3 bucket named "itv-lb-logs-${product}-${env}-eks"
+
+  ${env}: # Contains environment-specific overrides.
+  # Any key specified here will override that set under 'common' for environment ${env}.

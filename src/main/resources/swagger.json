@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Kotlin Template Example",
+    "description": "API description in Markdown.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost/"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "summary": "Endpoint provided by all applications",
+        "description": "Determine apps availability",
+        "responses": {
+          "200": {
+            "description": "Pong",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/healthcheck": {
+      "get": {
+        "summary": "Endpoint provided by all applications",
+        "description": "Provides status of application dependencies",
+        "responses": {
+          "200": {
+            "description": "e.g. `{ postgresqldbStatus: \"UP\" }`",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

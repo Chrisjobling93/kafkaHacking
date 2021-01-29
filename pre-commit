@@ -1,0 +1,14 @@
+#!/bin/bash
+
+git stash -q --keep-index
+
+echo "Running git pre-commit hook"
+./gradlew ktlintCheck
+
+RESULT=$?
+
+git stash pop -q
+
+# return 1 exit code if running checks fails and run format to then re-add formatted files
+[ $RESULT -ne 0 ] && ./gradlew ktlintFormat && exit 1
+exit 0
